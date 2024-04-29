@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "electron": "^30.0.1",
+    "mongoose": "^8.3.2"
+  },
+  "name": "hamburgueria",
+  "version": "1.0.0",
+  "description": "Hamburgueria para projeto final SENAC",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Gustavo, Paulo, Gabriel e Millena",
+  "license": "MIT"
+}
