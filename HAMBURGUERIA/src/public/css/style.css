@@ -1,0 +1,43 @@
+.propagandas{
+    background-image: url(../img/Banner2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 80vh;
+    position: fixed;
+}
+
+.comecar{
+    width: 100%;
+    height: 27%;
+    background-color: rgb(255, 190, 50);
+    margin-top: 630px;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+}
+
+.pagamentos img{
+    width: 24px;
+    height: 24px;
+}
+
+.subir{
+    animation: desaparecer 4s forwards;
+}
+
+@keyframes desaparecer {
+    0%{
+        top:0%;
+    }
+    100%{
+        top: -200%;
+        z-index: -999;
+    }
+}

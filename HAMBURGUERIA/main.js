@@ -1,25 +1,27 @@
 const { app, BrowserWindow } = require("electron");
+const {conectar, desconectar} = require ('./database')
 const path = require("node:path");
 
-const createWindow = () => {
-  const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+let win
+const mainWindow = () => {
+  win = new BrowserWindow({
+    width: 567,
+    height: 1080,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
   });
 
-  win.loadFile("index.html");
+  win.loadFile(`${__dirname}/src/views/index.html`)
 };
 
 app.whenReady().then(() => {
-  createWindow(); //criar a janela
+  mainWindow(); //criar a janela
   // executa a função para verificar o status de conexão
 
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow();
+      mainWindow();
     }
   });
 });
