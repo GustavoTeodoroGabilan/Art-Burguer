@@ -5,10 +5,14 @@ const path = require("node:path");
 let win
 const mainWindow = () => {
   win = new BrowserWindow({
-    width: 567,
-    height: 1080,
+    width: 500,
+    height: 900,
+    resizable: false,
+    autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
+      nodeIntegration:true,
+      contextIsolation:false,
     },
   });
 
