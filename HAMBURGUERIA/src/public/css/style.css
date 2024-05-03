@@ -32,9 +32,7 @@
     max-height: 24px;
 }
 
-.subir{
-    animation: desaparecer 4s forwards;
-}
+
 
 /**Tela Inicio*/
 .inicio{
@@ -46,8 +44,22 @@
 .menu{
     width: 20%;
     height: 100%;
-    background-color: rgb(255, 217, 0);
+    background-color: #ffd900;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
+
+.btn-escolha{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 
 
 
@@ -60,4 +72,21 @@
         top: -200%;
         z-index: -999;
     }
+}
+
+@keyframes crescer {
+    0%{
+        scale: 1;
+    }
+    100%{
+        scale: 1.2;
+    }
+}
+
+.subir{
+    animation: desaparecer 4s forwards;
+}
+
+.crescer{
+    animation: crescer 1s forwards;
 }
