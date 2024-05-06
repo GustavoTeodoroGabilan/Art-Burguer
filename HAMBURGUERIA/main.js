@@ -35,3 +35,11 @@ app.on("window-all-closed", () => {
     app.quit();
   }
 });
+
+//-------------------------------------------------------------------------------------------------------
+ipcMain.on('get-lanches', async (event, args) => {
+  const opcoesLanches = await Lanche.find() //.find faz a busca e como o "select no mysql"
+  console.log(opcoesLanches) //passo 2 fins didaticos (teste)
+  //passo 3(slide) enviar ao renderer(view) as tarefas pendentes
+  event.reply('get-options',JSON.stringify(opcoesLanches))//JSON.stringify converte para o JSON
+})
