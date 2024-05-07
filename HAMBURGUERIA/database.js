@@ -2,8 +2,6 @@ const mongoose = require('mongoose')
 // obter do compass (string para conexão com o banco)
 let url = "mongodb://admin:123%40senac@10.26.49.217:27017/dblanches?authSource=admin"
 
-
-
 const conectar = async () => {
     try {
         await mongoose.connect(url)

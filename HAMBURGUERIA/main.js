@@ -1,8 +1,16 @@
-const { app, BrowserWindow } = require("electron");
-const {conectar, desconectar} = require ('./database')
+const {
+  app,
+  BrowserWindow,
+  ipcMain,
+} = require("electron/main");
 const path = require("node:path");
 
-let win
+// importar o módulo do banco de dados
+const { conectar, desconectar } = require("./database");
+//importar o Schema (models)
+const Lanches = require(`${__dirname}/src/Models/Lanches`);
+
+let win;
 const mainWindow = () => {
   win = new BrowserWindow({
     width: 500,
@@ -11,12 +19,12 @@ const mainWindow = () => {
     autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
-      nodeIntegration:true,
-      contextIsolation:false,
+      nodeIntegration: true,
+      contextIsolation: false,
     },
   });
 
-  win.loadFile(`${__dirname}/src/views/index.html`)
+  win.loadFile(`${__dirname}/src/views/index.html`);
 };
 
 app.whenReady().then(() => {
@@ -36,10 +44,29 @@ app.on("window-all-closed", () => {
   }
 });
 
-//-------------------------------------------------------------------------------------------------------
-ipcMain.on('get-lanches', async (event, args) => {
-  const opcoesLanches = await Lanche.find() //.find faz a busca e como o "select no mysql"
-  console.log(opcoesLanches) //passo 2 fins didaticos (teste)
-  //passo 3(slide) enviar ao renderer(view) as tarefas pendentes
-  event.reply('get-options',JSON.stringify(opcoesLanches))//JSON.stringify converte para o JSON
+app.on("before-quit", async () => {
+  await desconectar();
+});
+
+ipcMain.on('send-message', (event,message) => {
+  console.log("<<<",message)
+  statusConexao()
 })
+
+const statusConexao = async () => {
+  try {
+    await conectar();
+    //enviar uma mensagem para a janela (renderer.js) informando o status da conexão e os erros caso ocorram
+    win.webContents.send("db-status", "Banco de dados conectado");
+  } catch (error) {
+    win.webContents.send(`db-status', "Erro de conexão: ${error.message}`);
+  }
+};
+
+//-------------------------------------------------------------------------------------------------------
+ipcMain.on("get-lanches", async (event, args) => {
+  const opcoesLanches = await Lanches.find(); //.find faz a busca e como o "select no mysql"
+  console.log(opcoesLanches); //passo 2 fins didaticos (teste)
+  //passo 3(slide) enviar ao renderer(view) as tarefas pendentes
+  event.reply("get-options", JSON.stringify(opcoesLanches)); //JSON.stringify converte para o JSON
+});

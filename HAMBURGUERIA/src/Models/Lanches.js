@@ -1,6 +1,6 @@
 const {model, Schema} = require('mongoose')
 
-const lanche = new Schema({
+const lancheSchema = new Schema({
     nome: {
         type: String
     },
@@ -11,8 +11,8 @@ const lanche = new Schema({
         type: String
     },
     imagem:{
-        type: Image
+        type: String
     }
 })
 
-module.exports = model('Lanche', lancheSchema)
+module.exports = model('Lanches', lancheSchema)
