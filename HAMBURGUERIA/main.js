@@ -70,3 +70,23 @@ ipcMain.on("get-lanches", async (event, args) => {
   //passo 3(slide) enviar ao renderer(view) as tarefas pendentes
   event.reply("get-options", JSON.stringify(opcoesLanches)); //JSON.stringify converte para o JSON
 });
+
+ipcMain.on("buscar-lanche", async (event, args) => {
+  console.log("Lanche selecionado:");  
+  console.log(args)
+  try {
+    const lancheDados = await Lanches.find({
+      nome: new RegExp(args, 'i') //i ignore(letras maiuscula/minuscula)    
+  })
+  console.log(lancheDados)
+  event.reply('lanche-data', JSON.stringify(lancheDados))
+
+  } catch (error) {
+    console.log(error)
+  }
+
+})
+
+ipcMain.on('array-lanche', async (event, arrayLanches) => {
+  ipcMain.send('array-lanche-cheio', arrayLanches)
+})
