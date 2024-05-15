@@ -1,8 +1,4 @@
-const {
-  app,
-  BrowserWindow,
-  ipcMain,
-} = require("electron/main");
+const { app, BrowserWindow, ipcMain } = require("electron/main");
 const path = require("node:path");
 
 // importar o módulo do banco de dados
@@ -15,7 +11,7 @@ const mainWindow = () => {
   win = new BrowserWindow({
     width: 500,
     height: 900,
-    resizable: false,
+    
     autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
@@ -48,10 +44,10 @@ app.on("before-quit", async () => {
   await desconectar();
 });
 
-ipcMain.on('send-message', (event,message) => {
-  console.log("<<<",message)
-  statusConexao()
-})
+ipcMain.on("send-message", (event, message) => {
+  console.log("<<<", message);
+  statusConexao();
+});
 
 const statusConexao = async () => {
   try {
@@ -72,21 +68,19 @@ ipcMain.on("get-lanches", async (event, args) => {
 });
 
 ipcMain.on("buscar-lanche", async (event, args) => {
-  console.log("Lanche selecionado:");  
-  console.log(args)
+  console.log("Lanche selecionado:");
+  console.log(args);
   try {
     const lancheDados = await Lanches.find({
-      nome: new RegExp(args, 'i') //i ignore(letras maiuscula/minuscula)    
-  })
-  console.log(lancheDados)
-  event.reply('lanche-data', JSON.stringify(lancheDados))
-
+      nome: new RegExp(args, "i"), //i ignore(letras maiuscula/minuscula)
+    });
+    console.log(lancheDados);
+    event.reply("lanche-data");
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
+});
 
-})
-
-ipcMain.on('array-lanche', async (event, arrayLanches) => {
-  ipcMain.send('array-lanche-cheio', arrayLanches)
-})
+ipcMain.on("array-lanche", async (event, arrayLanches) => {
+  ipcMain.send("array-lanche-cheio", arrayLanches);
+});

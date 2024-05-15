@@ -29,11 +29,11 @@ function pegarLanche(){
     ipcRenderer.send('buscar-lanche', nome)
 }
 
-ipcRenderer.on('lanche-data', async (event, lancheDados) => {
-    const lanche = JSON.parse(lancheDados)
-    arrayLanches = lanche
-    ipcRenderer.send('array-lanche',arrayLanches)
-})
+// ipcRenderer.on('lanche-data', async (event, lancheDados) => {
+//     const lanche = JSON.parse(lancheDados)
+//     arrayLanches = lanche
+//     ipcRenderer.send('array-lanche',arrayLanches)
+// })
 
 //--------------------------RENDERIZAÇÃO-----------------------------
 function renderizarLanches(lanche) {

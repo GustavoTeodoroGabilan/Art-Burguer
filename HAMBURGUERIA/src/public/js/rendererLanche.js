@@ -5,7 +5,9 @@ let lista, paginaLanche, nomeLanche
 let arrayLanches = [];
 paginaLanche = document.querySelector("#lanche")
 
-ipcMain.send('', arrayLanches)
+ipcRenderer.on('lanche-data', () =>{
+    console.log("teste");
+})
 
 ipcRenderer.on('array-lanche-cheio', (event, dadosLanche) =>{
     console.log(dadosLanche) // teste do passo 6
