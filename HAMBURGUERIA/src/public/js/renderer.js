@@ -42,7 +42,7 @@ function renderizarLanches(lanche) {
 lanche.forEach((t) => {
     lista.innerHTML += `
 
-<a class="lanche" href="paginaProduto.html" id="produto" onclick="pegarLanche()">
+<a class="lanche" href="#" id="produto" onclick="lancheSelecionado()">
     <img src="../public/img/alelo.png" alt="" class="imagemLanche">
     <h3 class="nomeLanche" id="nomeLanche">${t.nome}</h3>
     <p class="preco">${t.preco}</p>
@@ -50,3 +50,27 @@ lanche.forEach((t) => {
 `;
 });
 }
+
+function lancheSelecionado(){
+document.getElementById('lancheSelecionado').innerHTML += `
+<div  class="lancheSelecionado">
+<img src="../public/img/alelo.png" alt="">
+<h2>Lanche</h4>
+<p>descricao</p>
+<p class="">preco</p>
+<button>adicionar</button>
+</div>
+`
+document.querySelector('.inicio').classList.add("blur")
+document.querySelector('.inicio').disable
+}
+
+/**
+ *  <section class="lancheSelecionado">
+      <img src="../public/img/alelo.png" alt="">
+      <h2>Lanche</h4>
+      <p>descricao</p>
+      <p class="preco">preco</p>
+      <button>adicionar</button>
+    </section>
+ */

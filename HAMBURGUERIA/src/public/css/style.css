@@ -41,6 +41,7 @@
     width: 100%;
     height: 100vh;
     display: flex;
+
 }
 
 /**Menu de opções*/
@@ -52,7 +53,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    
+    position: fixed;
 }
 
 .btn-escolha{
@@ -63,16 +64,24 @@
     align-items: center;
     justify-content: center;
 }
+
+.blur{
+    filter: blur(13px);
+}
+
 /**Cards de lanche*/
 .lanches{
     width: 80%;
     height: 100%;
     display: flex;
+    position: sticky;
     align-items: start;
     justify-content: start;
     gap: 30px;
     padding: 10px;
     flex-wrap: wrap;
+    left: 80%;
+    margin-left: 20%;
 }
 
 .lanche{
@@ -108,7 +117,37 @@
 text-decoration: none;
 }
 
+.lancheSelecionado{
+    width: 70%;
+    height: 60%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #ffffff;
+    border: 2px #ffd900 solid;
+    border-radius: 10px;
+    top: 20%;
+    left: 15%;
+}
 
+.lancheSelecionado img{
+    width: 70%;
+    height: 50%;
+}
+
+.lancheSelecionado .preco{
+    font-size: 1.4em;
+}
+
+.lancheSelecionado button{
+    width: 80%;
+    height: 10%;
+    text-align: center;
+    background-color: #ffd900;
+    border-radius: 10px;
+}
 
 
 
