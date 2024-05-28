@@ -76,12 +76,13 @@ ipcMain.on("buscar-lanche", async (event, args) => {
       nome: new RegExp(args, "i"), //i ignore(letras maiuscula/minuscula)
     });
     console.log(lancheDados);
-    event.reply("lanche-data");
+    event.reply("lanche-data", JSON.stringify(lancheDados));
   } catch (error) {
     console.log(error);
   }
 });
 
-ipcMain.on("array-lanche", async (event, arrayLanches) => {
-  ipcMain.send("array-lanche-cheio", arrayLanches);
-});
+//--------------------------------------ADD PEDIDO------------------------------------
+ipcMain.on('novo-pedido', async (event, args) => {
+  console.log(args);
+})
