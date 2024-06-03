@@ -1,11 +1,8 @@
-# Hamburgueria
+# Modernizando o Atendimento em Hambúrguerias: Introdução ao Sistema de Totem
 
-#Título: Modernizando o Atendimento em Hambúrguerias: Introdução ao Sistema de Totem
+## Imagine uma experiência de atendimento em hambúrguerias onde a tecnologia não só otimiza o processo, mas também eleva a satisfação do cliente. Bem-vindo ao futuro da indústria alimentícia, com o nosso Sistema de Totem de Alto Atendimento.
 
-#Introdução:
-Imagine uma experiência de atendimento em hambúrguerias onde a tecnologia não só otimiza o processo, mas também eleva a satisfação do cliente. Bem-vindo ao futuro da indústria alimentícia, com o nosso Sistema de Totem de Alto Atendimento.
-
-#O Problema:
+O Problema:
 No mundo acelerado de hoje, os clientes valorizam cada vez mais a eficiência e conveniência. As longas filas e a espera prolongada são pontos de atrito que afetam tanto os clientes quanto os negócios. Como podemos resolver esse problema de forma inovadora?
 Pensando nisso desenvolvemos um sistema de alto atendimento que irá facilitar a vida dos nossos crientes 
 
