@@ -38,6 +38,35 @@
     max-height: 24px;
 }
 
+.finalizarPedido{
+    width: 80%;
+    height: 10%;
+    border: 2px #ffd900 solid;
+    position: fixed;
+    left: 176px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 90%;
+    background-color: #ffffff;
+}
+
+.btn-finaliza{
+    text-decoration: none;
+    color: red;
+    width: 80%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: 1.3em;
+    font-weight: bold;
+    background-color: #ffd900;
+    text-align: center;
+    
+    border-radius: 50px;
+}
 
 
 
@@ -153,7 +182,43 @@ text-decoration: none;
     border-radius: 10px;
 }
 
+.ocultar{
+    display: none;
+    z-index: -999;
+}
 
+/*Pagina pagamentos*/
+.pagamento{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.metodos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 70%;
+}
+
+.metodosPagamento{
+    width: 20%;
+    height: 20%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.metodosPagamento img{
+    width: 90%;
+    height: 60%;
+}
 
 /*Animações*/
 @keyframes desaparecer {

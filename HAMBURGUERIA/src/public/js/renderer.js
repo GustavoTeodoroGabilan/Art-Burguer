@@ -4,6 +4,7 @@ const { ipcRenderer } = require("electron");
 let arrayLanches = [];
 let arrayLancheSelecionado = []
 let lancheIndividual = document.getElementById("produto")
+let arrayPedidos = []
 
 let updateStatus = false;
 
@@ -25,7 +26,7 @@ ipcRenderer.on("get-options", (event, args) => {
     renderizarLanches(arrayLanches);
 });
 
-//--------------------------PAGINA LANCHE-----------------------------
+//--------------------------PAGINA LANCHE----------------------------
 
 function pegarLanche(nomeLanche){
     ipcRenderer.send('buscar-lanche', nomeLanche)
@@ -40,8 +41,23 @@ ipcRenderer.on('lanche-data', async (event, lancheDados) => {
 
 function novoPedido(nomeLancheSelecionado){
     console.log(nomeLancheSelecionado)
-    ipcRenderer.send("novo-pedido", nomeLancheSelecionado)
+    arrayPedidos.push(nomeLancheSelecionado)
+    arrayPedidos.forEach((t) => {
+        console.log(t)
+    })
+    document.getElementById('lancheSelecionado').innerHTML = ''
+    document.querySelector('.inicio').classList.remove("blur")
+    if(arrayPedidos != null){
+        document.getElementById('finalizarPedido').classList.remove('ocultar')
+    }
 }
+//---------------------------PAGAMENTO-------------------------------
+
+function finalizarPedido(){
+    document.getElementById('inicio').classList.add("ocultar")
+
+}
+
 //--------------------------RENDERIZAÇÃO-----------------------------
 function renderizarLanches(lanche) {
   lista.innerHTML = ""; //Limpar a lista
@@ -66,7 +82,6 @@ function lancheSelecionado(lanche){
         document.getElementById('lancheSelecionado').innerHTML += `
         <div  class="lancheSelecionado">
         <img src="../public/img/alelo.png" alt="">
-        <p>${t._id}</p>
         <h2>${t.nome}</h4>
         <p>${t.ingredientes}</p>
         <p class="">${t.preco}</p>
@@ -77,3 +92,5 @@ function lancheSelecionado(lanche){
 document.querySelector('.inicio').classList.add("blur")
 document.querySelector('.inicio').disable
 }
+
+
