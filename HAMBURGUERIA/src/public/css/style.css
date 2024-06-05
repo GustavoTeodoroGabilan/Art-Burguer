@@ -74,7 +74,7 @@
     width: 100%;
     height: 100vh;
     display: flex;
-
+    background-color: #ffffff;
 }
 
 /**Menu de opções*/
@@ -200,23 +200,32 @@ text-decoration: none;
 .metodos{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    gap: 40px;
+    flex-wrap: wrap;
     width: 80%;
     height: 70%;
 }
 
 .metodosPagamento{
-    width: 20%;
-    height: 20%;
+    width: 40%;
+    height: 30%;
     text-align: center;
     align-items: center;
     justify-content: center;
     display: flex;
     flex-direction: column;
-}
+    border: 2px #ffd900 solid;
+    background-color: #ffd900;
+    font-size: 1.2em;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}   
 
 .metodosPagamento img{
-    width: 90%;
+    width: 70%;
     height: 60%;
 }
 

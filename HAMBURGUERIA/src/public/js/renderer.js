@@ -44,18 +44,38 @@ function novoPedido(nomeLancheSelecionado){
     arrayPedidos.push(nomeLancheSelecionado)
     arrayPedidos.forEach((t) => {
         console.log(t)
+        ipcRenderer.send('get-valor-lanche', t)
     })
     document.getElementById('lancheSelecionado').innerHTML = ''
     document.querySelector('.inicio').classList.remove("blur")
     if(arrayPedidos != null){
         document.getElementById('finalizarPedido').classList.remove('ocultar')
+        arrayPedidos.forEach((t) => {
+            
+        })
     }
 }
 //---------------------------PAGAMENTO-------------------------------
 
+ipcRenderer.on("dadosLanche-selecionado", (args)=>{
+    let soma =+ args.preco
+    console.log(args.preco)
+    console.log(soma)
+    document.getElementById('valorTotal').innerText = soma
+})
+
 function finalizarPedido(){
     document.getElementById('inicio').classList.add("ocultar")
+    document.getElementById('paginaPagamento').classList.remove('ocultar')
+}
 
+function telaConfirmacao(){
+    document.getElementById('paginaPagamento').classList.add('ocultar')
+    document.getElementById('paginaConfirmacao').classList.remove('ocultar')
+
+    arrayPedidos.forEach((t) => {
+        ipcRenderer.send('get-valor-lanche', t)
+    })
 }
 
 //--------------------------RENDERIZAÇÃO-----------------------------
@@ -80,7 +100,7 @@ function lancheSelecionado(lanche){
 
     lanche.forEach((t) => {
         document.getElementById('lancheSelecionado').innerHTML += `
-        <div  class="lancheSelecionado">
+        <div  class="lancheSelecionado crescer">
         <img src="../public/img/alelo.png" alt="">
         <h2>${t.nome}</h4>
         <p>${t.ingredientes}</p>

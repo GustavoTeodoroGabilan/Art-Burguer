@@ -86,3 +86,12 @@ ipcMain.on("buscar-lanche", async (event, args) => {
 ipcMain.on('novo-pedido', async (event, args) => {
   console.log(args);
 })
+
+ipcMain.on('get-valor-lanche', async(event, args) => {
+  const lancheEscolhido = await Lanches.find({
+    nome: new RegExp(args, "i")
+  })
+  console.log("-----------------------------------------------")
+  console.log(lancheEscolhido)
+  event.reply("dadosLanche-selecionado", JSON.stringify(lancheEscolhido))
+})

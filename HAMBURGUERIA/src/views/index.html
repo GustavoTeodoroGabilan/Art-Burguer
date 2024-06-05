@@ -1,60 +1,85 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--evitar ataques de Cross Site Scripting (injeção de dados)-->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'">
-    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../public/css/style.css">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'"
+    />
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../public/css/style.css" />
     <title>Lanchonete</title>
-    
-</head>
-<body>
+  </head>
+  <body>
     <main class="propagandas" id="telaComeco">
-      <img src="../public/img/Banner2.png" alt="Promoção" class="promocao">
+      <img src="../public/img/Banner2.png" alt="Promoção" class="promocao" />
       <section class="comecar" id="comecarAgora">
         <div class="pagamentos">
-          <img src="../public/img/alelo.png" alt="Alelo">
-          <img src="../public/img/boleto.png" alt="Boleto">
-          <img src="../public/img/paypal.png" alt="Paypal">
-          <img src="../public/img/pix.png" alt="Pix">
-          <img src="../public/img/visa.png" alt="Visa">
-          <img src="../public/img/mastercard.png" alt="Mastercard">
+          <img src="../public/img/alelo.png" alt="Alelo" />
+          <img src="../public/img/boleto.png" alt="Boleto" />
+          <img src="../public/img/paypal.png" alt="Paypal" />
+          <img src="../public/img/pix.png" alt="Pix" />
+          <img src="../public/img/visa.png" alt="Visa" />
+          <img src="../public/img/mastercard.png" alt="Mastercard" />
         </div>
         <p>Fazer meu pedido!</p>
       </section>
     </main>
     <section class="inicio" id="inicio">
       <div class="menu">
-        <a href="#" class="btn-escolha" id="promocoes"><img src="../public/img/promocaoIcon.png" alt="Promoções"></a>
-        <a href="#" class="btn-escolha" id="hamburguers"><img src="../public/img/hamburguerIcon.png" alt="Hamburguers"></a>
-        <a href="#" class="btn-escolha" id="acompanhamentos"><img src="../public/img/acompanhamentoIcon.png" alt="Porções"></a>
-        <a href="#" class="btn-escolha" id="bebidas"><img src="../public/img/bebidasIcon.png" alt="Bebidas"></a>
-        <a href="#" class="btn-escolha" id="sobremesas"><img src="../public/img/sobremesaIcon.png" alt="Sobremesa"></a>
+        <a href="#" class="btn-escolha" id="promocoes"
+          ><img src="../public/img/promocaoIcon.png" alt="Promoções"
+        /></a>
+        <a href="#" class="btn-escolha" id="hamburguers"
+          ><img src="../public/img/hamburguerIcon.png" alt="Hamburguers"
+        /></a>
+        <a href="#" class="btn-escolha" id="acompanhamentos"
+          ><img src="../public/img/acompanhamentoIcon.png" alt="Porções"
+        /></a>
+        <a href="#" class="btn-escolha" id="bebidas"
+          ><img src="../public/img/bebidasIcon.png" alt="Bebidas"
+        /></a>
+        <a href="#" class="btn-escolha" id="sobremesas"
+          ><img src="../public/img/sobremesaIcon.png" alt="Sobremesa"
+        /></a>
       </div>
-      <div class="lanches" id="cardapio">        
-      </div>
+      <div class="lanches" id="cardapio"></div>
       <div id="finalizarPedido" class="finalizarPedido ocultar">
-        <button class="btn-finaliza" id="finaliza" onclick="finalizarPedido()">Pagamento</button>
+        <h3 class="valor" id="valorTotal"></h3>
+        <button class="btn-finaliza" id="finaliza" onclick="finalizarPedido()">
+          Pagamento
+        </button>
       </div>
     </section>
-    <section id="lancheSelecionado">
-      
-    </section>
-    <section id="pagamento" class="pagamento">
-      <h1>Método de Pagamento</h1>
-      <div class="metodos">
-        <a class="metodosPagamento"><img src="../public/img/alelo.png" alt=""></a>
-        <a class="metodosPagamento"><img src="../public/img/boleto.png" alt=""></a>
-        <a class="metodosPagamento"><img src="../public/img/mastercard.png" alt=""></a>
-        <a class="metodosPagamento"><img src="../public/img/paypal.png" alt=""></a>
-        <a class="metodosPagamento"><img src="../public/img/pix.png" alt=""></a>
-        <a class="metodosPagamento"><img src="../public/img/visa.png" alt=""></a>
-      </div>
+    <section id="lancheSelecionado"></section>
+    <section class="ocultar" id="paginaPagamento">
+      <section id="pagamento" class="ocultar pagamento">
+        <h1>Método de Pagamento</h1>
+        <div class="metodos">
+          <a class="metodosPagamento" onclick="telaConfirmacao()"
+            ><img src="../public/img/alelo.png" alt=""/> Vale Alimentação</a>
+          <a class="metodosPagamento" onclick="telaConfirmacao()"
+            ><img src="../public/img/boleto.png" alt=""
+          />Boleto</a>
+          <a class="metodosPagamento" onclick="telaConfirmacao()"
+            ><img src="../public/img/mastercard.png" alt=""
+          />Cartão de débito</a>
+          <a class="metodosPagamento" onclick="telaConfirmacao()"
+            ><img src="../public/img/paypal.png" alt=""
+          />Paypal</a>
+          <a class="metodosPagamento" onclick="telaConfirmacao()"
+            ><img src="../public/img/pix.png" alt=""
+          />Pix</a>
+          <a class="metodosPagamento" onclick="telaConfirmacao()"
+            ><img src="../public/img/visa.png" alt=""
+          />Cartão de credito</a>
+        </div>
+      </section>
     </section>
     <script src="../public/js/comeco.js"></script>
     <script src="../public/js/renderer.js"></script>
     <script src="../public/js/bootstrap.min.js"></script>
-</body>
+  </body>
 </html>
