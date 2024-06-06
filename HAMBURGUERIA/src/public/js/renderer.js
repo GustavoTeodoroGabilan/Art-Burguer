@@ -5,6 +5,8 @@ let arrayLanches = [];
 let arrayLancheSelecionado = []
 let lancheIndividual = document.getElementById("produto")
 let arrayPedidos = []
+let arrayCalculos = []
+
 
 let updateStatus = false;
 
@@ -57,11 +59,12 @@ function novoPedido(nomeLancheSelecionado){
 }
 //---------------------------PAGAMENTO-------------------------------
 
-ipcRenderer.on("dadosLanche-selecionado", (args)=>{
-    let soma =+ args.preco
-    console.log(args.preco)
-    console.log(soma)
-    document.getElementById('valorTotal').innerText = soma
+ipcRenderer.on("dadosLanche-selecionado", async (event,args)=>{
+    let lancheCalculo = JSON.parse(args)
+    console.log(lancheCalculo);
+    arrayCalculos = lancheCalculo
+    console.log(arrayCalculos);
+    calcularTotal(arrayCalculos)
 })
 
 function finalizarPedido(){
@@ -89,7 +92,7 @@ lanche.forEach((t) => {
 <a class="lanche" href="#" id="produto" onclick="pegarLanche('${t.nome}')">
     <img src="../public/img/alelo.png" alt="" class="imagemLanche">
     <h3 class="nomeLanche" id="nomeLanche">${t.nome}</h3>
-    <p class="preco">${t.preco}</p>
+    <p class="preco">R$${t.preco}</p>
 </a>
 `;
 
@@ -104,7 +107,7 @@ function lancheSelecionado(lanche){
         <img src="../public/img/alelo.png" alt="">
         <h2>${t.nome}</h4>
         <p>${t.ingredientes}</p>
-        <p class="">${t.preco}</p>
+        <p class="">R$${t.preco}</p>
         <button id="addPedido" onclick="novoPedido('${t.nome}')">adicionar</button>
         </div>
         `
@@ -113,4 +116,14 @@ document.querySelector('.inicio').classList.add("blur")
 document.querySelector('.inicio').disable
 }
 
-
+function calcularTotal(lanches){
+    let valorLanche
+    let calculo
+lanches.forEach((t) => {
+    console.log(t.preco)
+    valorLanche = t.preco
+    calculo += valorLanche
+    document.getElementById('valorTotal').innerText = `R$${calculo}`
+    })
+    
+}
