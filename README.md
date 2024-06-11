@@ -10,10 +10,9 @@
 
 ## Projeto - Hamburgueria Arte&Burguer
 
-Arte&Burguer é um toten de auto-atendimento que contém todas as informações necessárias para que o usuário se sinta em uma hamburgueria, desde o produtos á finalização do seu pedido.
+Arte&Burguer é um toten de auto-atendimento que visa, gerar uma experiência de um pedido, contendo todos os requisitos necessário para que o usuário vivêncie tudo por completo.
 
-
-  ![toten](https://github.com/GustavoTeodoroGabilan/Art-Burguer/assets/115747310/738504d0-a7a5-446f-a371-f4365f53bdea)
+![toten](https://github.com/GustavoTeodoroGabilan/Art-Burguer/assets/115747310/738504d0-a7a5-446f-a371-f4365f53bdea)
 
 
 
