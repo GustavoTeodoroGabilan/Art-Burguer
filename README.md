@@ -2,10 +2,10 @@
 
 #Integrantes do grupo: 
 
--Gabriel Rodrigues dos Santos - https://github.com/gabrielrodriguesdossantos
--Gustavo Teodoro - https://github.com/GustavoTeodoroGabilan
--Milena Gutemberg - https://github.com/mgutemb
--Paulo Nicolas dos Santos - https://github.com/paulonicolas5569
+-Gabriel Rodrigues dos Santos: https://github.com/gabrielrodriguesdossantos
+-Gustavo Teodoro: https://github.com/GustavoTeodoroGabilan
+-Milena Gutemberg: https://github.com/mgutemb
+-Paulo Nicolas dos Santos: https://github.com/paulonicolas5569
 
 
 ## Projeto - Hamburgueria Arte&Burguer
