@@ -6,6 +6,8 @@ let arrayLancheSelecionado = [];
 let lancheIndividual = document.getElementById("produto");
 let arrayPedidos = [];
 let arrayCalculos = [];
+let arrayRenderiza = []
+
 
 //let calculo = 0
 let preco;
@@ -23,10 +25,8 @@ ipcRenderer.send("send-message", "Status do bando de dados:");
 ipcRenderer.send("get-lanches");
 //Passo 3 (slide) receber as
 ipcRenderer.on("get-options", (event, args) => {
-  console.log(args);
   const opcoesLanches = JSON.parse(args);
   arrayLanches = opcoesLanches;
-  console.log(arrayLanches);
   renderizarLanches(arrayLanches);
 });
 
@@ -38,65 +38,48 @@ function pegarLanche(nomeLanche) {
 
 ipcRenderer.on("lanche-data", async (event, lancheDados) => {
   const lanche = JSON.parse(lancheDados);
-  console.log(lanche);
   arrayLancheSelecionado = lanche;
   lancheSelecionado(arrayLancheSelecionado);
 });
 
 function novoPedido(nomeLancheSelecionado) {
-  console.log(nomeLancheSelecionado);
   arrayPedidos.push(nomeLancheSelecionado);
   arrayPedidos.forEach((t) => {
-    console.log(t);
-    ipcRenderer.send("get-valor-lanche", t);
+    ipcRenderer.send("get-dados-lanche", t);
   });
   document.getElementById("lancheSelecionado").innerHTML = "";
   document.querySelector(".inicio").classList.remove("blur");
   if (arrayPedidos != null) {
     document.getElementById("finalizarPedido").classList.remove("ocultar");
-    arrayPedidos.forEach((t) => {});
   }
 }
 //---------------------------PAGAMENTO-------------------------------
 
 ipcRenderer.on("dadosLanche-selecionado", async (event, args) => {
-  let lancheCalculo = JSON.parse(args);
-  console.log(lancheCalculo);
+  let lancheCalculo = "";
+  lancheCalculo = JSON.parse(args)
   arrayCalculos = lancheCalculo;
-  let preco = 0
-  arrayCalculos.forEach((t) => {
-        let calculo = []
-        calculo.push(Number(t.preco))
-        calculo.forEach((c) =>{
-            preco += c
-            console.log(preco);
-            document.getElementById('valorTotal').innerText = `R$${calculo}`
-
-        })
-        
-        
-        })
-// let calculo = arrayCalculos.reduce((ac, lanche) => {
-//   return ac + Number(lanche.preco);
-// }, 0);
-
-//console.log(calculo);
-//document.getElementById('valorTotal').innerText = `R$${calculo}`
-    })
-
+  pedidosConfirmacoes(arrayCalculos)
+})
 
   function finalizarPedido() {
     document.getElementById("inicio").classList.add("ocultar");
-    document.getElementById("paginaPagamento").classList.remove("ocultar");
+    document.getElementById("confirmarPedido").classList.remove("ocultar");
+    
   }
 
   function telaConfirmacao() {
     document.getElementById("paginaPagamento").classList.add("ocultar");
     document.getElementById("paginaConfirmacao").classList.remove("ocultar");
+    //console.log(arrayCalculos);
+    //pedidosConfirmacoes(arrayCalculos)
 
-    arrayPedidos.forEach((t) => {
-      ipcRenderer.send("get-valor-lanche", t);
-    });
+
+
+    
+    // arrayPedidos.forEach((t) => {
+    //   ipcRenderer.send("get-valor-lanche", t);
+    // });
   }
 
   //--------------------------RENDERIZAÇÃO-----------------------------
@@ -105,7 +88,6 @@ ipcRenderer.on("dadosLanche-selecionado", async (event, args) => {
     let contador = 0;
     //percorrer o array
     lanche.forEach((t) => {
-      contador += 1;
       lista.innerHTML += `
 <a class="lanche" href="#" id="produto" onclick="pegarLanche('${t.nome}')">
     <img src="../public/img/alelo.png" alt="" class="imagemLanche">
@@ -132,11 +114,29 @@ ipcRenderer.on("dadosLanche-selecionado", async (event, args) => {
     document.querySelector(".inicio").disable;
   }
 
-//   function calcularTotal(precoLanche) {
-//     let valorLanche = Number(precoLanche);
-//     console.log(valorLanche);
-//     console.log(calculo);
+  function pedidosConfirmacoes(pedidos){
+   document.getElementById('pedidosFeitos').innerHTML += ""
+    pedidos.forEach((t) => {
+      document.getElementById('pedidosFeitos').innerHTML += `
+         <div class="cardPedido">
+          <img src="../public/img/alelo.png" alt="" class="imagemLanche" />
+          <div class="titleDesc">
+            <h1>${t.nome}</h1>
+          </div>
+          <h3>R$${t.preco}</h3>
+          <button class="botaoRemover"></button>
+        </div>
+      `
+    })
+  }
 
-//     document.getElementById("valorTotal").innerText = `R$${calculo}`;
-//   }
+  // function calcularTotal(precoLanche) {
+  //   precoLanche.forEach((t) => {
+  //     let valorLanche = Number(t.preco)
+  //     let soma = 0
+  //     soma += valorLanche
+  //   })
+
+  //   document.getElementById("valorTotal").innerText = `R$${calculo}`;
+  // }
 

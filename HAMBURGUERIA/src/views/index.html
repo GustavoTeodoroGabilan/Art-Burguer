@@ -13,7 +13,7 @@
     <title>Lanchonete</title>
   </head>
   <body>
-    <main class="propagandas" id="telaComeco">
+    <main class="propagandas " id="telaComeco">
       <img src="../public/img/Banner2.png" alt="Promoção" class="promocao" />
       <section class="comecar" id="comecarAgora">
         <div class="pagamentos">
@@ -27,7 +27,7 @@
         <p>Fazer meu pedido!</p>
       </section>
     </main>
-    <section class="inicio" id="inicio">
+    <section class="inicio " id="inicio">
       <div class="menu">
         <a href="#" class="btn-escolha" id="promocoes"
           ><img src="../public/img/promocaoIcon.png" alt="Promoções"
@@ -49,32 +49,43 @@
       <div id="finalizarPedido" class="finalizarPedido ocultar">
         <h3 class="valor" id="valorTotal"></h3>
         <button class="btn-finaliza" id="finaliza" onclick="finalizarPedido()">
-          Pagamento
+          Confirmar pedido
         </button>
       </div>
     </section>
-    <section id="lancheSelecionado"></section>
+    <section id="lancheSelecionado" class=""></section>
+    <section id="confirmarPedido" class="telaConfirmar ocultar">
+      <div id="pedidosFeitos" class="pedidosFeitos">
+      </div>
+      <div class="valorTotal">
+        <h2>Valor total:</h2>
+        <h3 id="valorTotal">R$</h3>
+      </div>
+      <a href="#" class="botaoPagamento">Pagamento</a>
+    </section>
     <section class="ocultar" id="paginaPagamento">
       <section id="pagamento" class="ocultar pagamento">
         <h1>Método de Pagamento</h1>
         <div class="metodos">
           <a class="metodosPagamento" onclick="telaConfirmacao()"
-            ><img src="../public/img/alelo.png" alt=""/> Vale Alimentação</a>
+            ><img src="../public/img/alelo.png" alt="" /> Vale Alimentação</a
+          >
           <a class="metodosPagamento" onclick="telaConfirmacao()"
-            ><img src="../public/img/boleto.png" alt=""
-          />Boleto</a>
+            ><img src="../public/img/boleto.png" alt="" />Boleto</a
+          >
           <a class="metodosPagamento" onclick="telaConfirmacao()"
-            ><img src="../public/img/mastercard.png" alt=""
-          />Cartão de débito</a>
+            ><img src="../public/img/mastercard.png" alt="" />Cartão de
+            débito</a
+          >
           <a class="metodosPagamento" onclick="telaConfirmacao()"
-            ><img src="../public/img/paypal.png" alt=""
-          />Paypal</a>
+            ><img src="../public/img/paypal.png" alt="" />Paypal</a
+          >
           <a class="metodosPagamento" onclick="telaConfirmacao()"
-            ><img src="../public/img/pix.png" alt=""
-          />Pix</a>
+            ><img src="../public/img/pix.png" alt="" />Pix</a
+          >
           <a class="metodosPagamento" onclick="telaConfirmacao()"
-            ><img src="../public/img/visa.png" alt=""
-          />Cartão de credito</a>
+            ><img src="../public/img/visa.png" alt="" />Cartão de credito</a
+          >
         </div>
       </section>
     </section>
