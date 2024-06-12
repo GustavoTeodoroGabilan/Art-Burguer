@@ -7,6 +7,10 @@ Integrantes do grupo:
 - Millena Gutemberg: https://github.com/mgutemb
 - Paulo Nicolas dos Santos: https://github.com/paulonicolas5569
 
+## Intruções para Instalação e Uso do aplicativo
+
+Para todos que desejam utilizar é necessário fazer a instalação e configuração do MongoDB, todas as informações necessárias, estão abaixo.
+
 
 ## Projeto - Hamburgueria Arte&Burguer
 
