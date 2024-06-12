@@ -2,10 +2,10 @@
 
 Integrantes do grupo: 
 
--Gabriel Rodrigues dos Santos: https://github.com/gabrielrodriguesdossantos
--Gustavo Teodoro: https://github.com/GustavoTeodoroGabilan
--Millena Gutemberg: https://github.com/mgutemb
--Paulo Nicolas dos Santos: https://github.com/paulonicolas5569
+- Gabriel Rodrigues dos Santos: https://github.com/gabrielrodriguesdossantos
+- Gustavo Teodoro: https://github.com/GustavoTeodoroGabilan
+- Millena Gutemberg: https://github.com/mgutemb
+- Paulo Nicolas dos Santos: https://github.com/paulonicolas5569
 
 
 ## Projeto - Hamburgueria Arte&Burguer
@@ -23,9 +23,9 @@ Arte&Burguer é um toten de auto-atendimento que visa, gerar uma experiência de
 ## Tutorial passo a passo para desenvolver este projeto do "zero"
 Tecnologias que são abordadas neste tutorial:
 
-1.Instalação e criação do servidor
-2.Criação de banco de dados
-3.Desenvolvimento do código do Toten
+- Instalação e criação do servidor
+- Criação de banco de dados
+- Desenvolvimento do código do Toten
 
 
 
