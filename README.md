@@ -28,9 +28,8 @@ Arte&Burguer é um toten de auto-atendimento que visa, gerar uma experiência de
 ## Tutorial passo a passo para desenvolver este projeto do "zero"
 Tecnologias que são abordadas neste tutorial:
 
-- Instalação e criação do servidor
-- Criação de banco de dados
-- Desenvolvimento do código do Toten
+- Criação de banco de dados - MongoDB
+- Desenvolvimentodo Toten e Instalação
 
 
 
