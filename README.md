@@ -14,6 +14,19 @@ Arte&Burguer é um toten de auto-atendimento que visa, gerar uma experiência de
 
 ![toten](https://github.com/GustavoTeodoroGabilan/Art-Burguer/assets/115747310/738504d0-a7a5-446f-a371-f4365f53bdea)
 
+##Instalação do Aplicativo
+1. Em Releases faça o download do arquivo Arte&Burguer.jar
+
+///FALTA IMAGEM///////
+
+
+##Tutorial passo a passo para desenvolver este projeto do "zero"
+Tecnologias que são abordadas neste tutorial:
+
+Instalação e criação do servidor
+Criação de banco de dados
+Desenvolvimento do código do Toten
+
 
 
 
