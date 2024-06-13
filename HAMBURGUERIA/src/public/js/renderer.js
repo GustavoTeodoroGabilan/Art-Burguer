@@ -42,17 +42,40 @@ ipcRenderer.on("lanche-data", async (event, lancheDados) => {
   lancheSelecionado(arrayLancheSelecionado);
 });
 
+//Vitor// eu comentei essa sua parte do codigo
+// function novoPedido(nomeLancheSelecionado) {
+//   arrayPedidos.push(nomeLancheSelecionado);
+//   arrayPedidos.forEach((t) => {
+//     ipcRenderer.send("get-dados-lanche", t);
+//   });
+//   document.getElementById("lancheSelecionado").innerHTML = "";
+//   document.querySelector(".inicio").classList.remove("blur");
+//   if (arrayPedidos != null) {
+//     document.getElementById("finalizarPedido").classList.remove("ocultar");
+//   }
+// }
+
+
+
 function novoPedido(nomeLancheSelecionado) {
   arrayPedidos.push(nomeLancheSelecionado);
-  arrayPedidos.forEach((t) => {
-    ipcRenderer.send("get-dados-lanche", t);
-  });
+  ipcRenderer.send("get-dados-lanche", nomeLancheSelecionado);
   document.getElementById("lancheSelecionado").innerHTML = "";
   document.querySelector(".inicio").classList.remove("blur");
-  if (arrayPedidos != null) {
+  if (arrayPedidos.length > 0) {
     document.getElementById("finalizarPedido").classList.remove("ocultar");
   }
 }
+
+// Função para lidar com o clique do botão
+function addPedido() {
+  // Aqui você pode adicionar o nome do lanche selecionado
+  let nomeLancheSelecionado = 'pedidos'; // Substitua isso pelo nome real do lanche selecionado
+  novoPedido(nomeLancheSelecionado);
+}
+
+
+
 //---------------------------PAGAMENTO-------------------------------
 
 ipcRenderer.on("dadosLanche-selecionado", async (event, args) => {
@@ -60,10 +83,11 @@ ipcRenderer.on("dadosLanche-selecionado", async (event, args) => {
   lancheCalculo = JSON.parse(args)
   arrayCalculos = lancheCalculo;
   pedidosConfirmacoes(arrayCalculos)
+  
 })
 
   function finalizarPedido() {
-    document.getElementById("inicio").classList.add("ocultar");
+    document.getElementById("inicio").classList.add("ocultar")
     document.getElementById("confirmarPedido").classList.remove("ocultar");
     
   }
@@ -82,6 +106,10 @@ ipcRenderer.on("dadosLanche-selecionado", async (event, args) => {
     // });
   }
 
+  function paginaPagamento(){
+    document.getElementById("confirmarPedido").classList.add("ocultar")
+    document.getElementById("paginaPagamento").classList.remove("ocultar")
+  }
   //--------------------------RENDERIZAÇÃO-----------------------------
   function renderizarLanches(lanche) {
     lista.innerHTML = ""; //Limpar a lista
@@ -90,7 +118,7 @@ ipcRenderer.on("dadosLanche-selecionado", async (event, args) => {
     lanche.forEach((t) => {
       lista.innerHTML += `
 <a class="lanche" href="#" id="produto" onclick="pegarLanche('${t.nome}')">
-    <img src="../public/img/alelo.png" alt="" class="imagemLanche">
+    <img src="${t.imagem}" alt="" class="imagemLanche">
     <h3 class="nomeLanche" id="nomeLanche">${t.nome}</h3>
     <p class="preco">R$${t.preco}</p>
 </a>
@@ -102,7 +130,7 @@ ipcRenderer.on("dadosLanche-selecionado", async (event, args) => {
     lanche.forEach((t) => {
       document.getElementById("lancheSelecionado").innerHTML += `
         <div  class="lancheSelecionado crescer">
-        <img src="../public/img/alelo.png" alt="">
+        <img src="${t.imagem}" alt="">
         <h2>${t.nome}</h4>
         <p>${t.ingredientes}</p>
         <p class="">R$${t.preco}</p>
@@ -115,11 +143,13 @@ ipcRenderer.on("dadosLanche-selecionado", async (event, args) => {
   }
 
   function pedidosConfirmacoes(pedidos){
+    console.log("-------")
+    console.log(pedidos)
    document.getElementById('pedidosFeitos').innerHTML += ""
     pedidos.forEach((t) => {
       document.getElementById('pedidosFeitos').innerHTML += `
          <div class="cardPedido">
-          <img src="../public/img/alelo.png" alt="" class="imagemLanche" />
+          <img src="${t.imagem}" alt="" class="imagemLanche" />
           <div class="titleDesc">
             <h1>${t.nome}</h1>
           </div>
