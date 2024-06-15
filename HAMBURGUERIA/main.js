@@ -21,7 +21,7 @@ const mainWindow = () => {
   });
 
   win.loadFile(`${__dirname}/src/views/index.html`);
-  win.setFullScreen(true)
+  //win.setFullScreen(true)
 };
 
 app.whenReady().then(() => {
@@ -95,3 +95,6 @@ ipcMain.on("envia-array-pedidos", async(event, args) => {
   event.reply("recebe-array-pedidos", args)
 })
 
+ipcMain.on("recarregar", () => {
+  win.reload()
+})
