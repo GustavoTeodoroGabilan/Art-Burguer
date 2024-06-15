@@ -99,7 +99,9 @@ ipcRenderer.on("dadosLanche-selecionado", async (event, args) => {
     document.getElementById("paginaFinalizacao").classList.remove("tirar");
     document.getElementById("botaoVoltarPagamento").classList.add("tirar")
     document.getElementById("botaoVoltar").classList.add("tirar")
-
+    setTimeout(function() {
+      ipcRenderer.send("recarregar")
+  }, 2000);
   }
 
   function paginaPagamento(){
