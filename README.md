@@ -38,7 +38,11 @@ Tecnologias que são abordadas neste tutorial:
 
 ![340478931-eaa41757-0d38-4f8f-a3d7-58f23508a1e0](https://github.com/GustavoTeodoroGabilan/Art-Burguer/assets/115593922/d73023a4-3b8c-456d-897c-c5fa40403cd8)
 
-2- Tela de pagamento:
+2- Tela do seu carrinho:
+
+
+
+3- Tela de pagamento:
 
 ![340479235-ff543ce9-bd5a-4fc6-ac4f-5b02c5736221](https://github.com/GustavoTeodoroGabilan/Art-Burguer/assets/115593922/6d09fad6-f2b3-4289-8522-e2d21b8923fe)
 
