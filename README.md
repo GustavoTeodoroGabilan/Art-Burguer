@@ -32,5 +32,19 @@ Tecnologias que são abordadas neste tutorial:
 - Desenvolvimentodo Toten e Instalação
 
 
+## Tutorial passo a passo do projeto
+
+1- Tela incial (Produtos):
+
+![340479235-ff543ce9-bd5a-4fc6-ac4f-5b02c5736221](https://github.com/GustavoTeodoroGabilan/Art-Burguer/assets/115593922/7c2d1295-cd31-4973-a1e6-fba297f33b0a)
+
+2- Tela de pagamento:
+
+![340479235-ff543ce9-bd5a-4fc6-ac4f-5b02c5736221](https://github.com/GustavoTeodoroGabilan/Art-Burguer/assets/115593922/6d09fad6-f2b3-4289-8522-e2d21b8923fe)
+
+
+4- Tela de pedido finalizado:
+
+![340479276-77c7f5b0-613c-4e19-9b21-6a9562c0e1ff](https://github.com/GustavoTeodoroGabilan/Art-Burguer/assets/115593922/2ae292f4-1046-47bb-88a1-a14841657b9a)
 
 
