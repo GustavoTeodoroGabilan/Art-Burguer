@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.telaPedido{
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/fundo.PNG);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    position: fixed;
+}
+
+.preparando{
+    width: 50%;
+    height: 99%;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 3em;
+}
+
+.prontos{
+    width: 50%;
+    height: 99%;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 3em;    
+}
+
+.prontos h1{
+    margin-top: 20px;
+}
+
+.preparando h1{
+    margin-top: 20px;
+}
+
+.pedidosPreparando{
+    width: 100%;
+    height: 80%;
+    margin-top: 50px;
+    display: flex;
+    align-items: start;
+    justify-content: space-evenly;
+    gap: 70px;
+    flex-wrap: wrap;
+}
+
+.pedido{
+    width: 20%;
+    height: 20%;
+    background-color: rgb(189, 145, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pedido h2{
+    color: black;
+    font-size: 1em;
+}
+
+.pedidosProntos{
+    width: 100%;
+    height: 80%;
+    margin-top: 50px;
+    display: flex;
+    align-items: start;
+    justify-content: space-evenly;
+    gap: 70px;
+    flex-wrap: wrap;
+}
+
+.pedidoPronto{
+    width: 20%;
+    height: 20%;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pedidoPronto h2{
+    color: rgb(189, 145, 0);
+    font-size: 1em;
+}
