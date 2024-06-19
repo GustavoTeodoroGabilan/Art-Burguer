@@ -21,7 +21,7 @@ const mainWindow = () => {
   });
 
   win.loadFile(`${__dirname}/src/views/index.html`);
-  //win.setFullScreen(true)
+  win.setFullScreen(true)
 };
 
 app.whenReady().then(() => {
@@ -62,16 +62,30 @@ const statusConexao = async () => {
 
 //-------------------------------------------------------------------------------------------------------
 ipcMain.on("get-lanches", async (event, args) => {
-  const opcoesLanches = await Lanches.find(); //.find faz a busca e como o "select no mysql"
+  const opcoesLanches = await Lanches.find({categoria: new RegExp("Combos", "i")}); //.find faz a busca e como o "select no mysql"
   //passo 3(slide) enviar ao renderer(view) as tarefas pendentes
   event.reply("get-options", JSON.stringify(opcoesLanches)); //JSON.stringify converte para o JSON
 });
+
+ipcMain.on("filtrar-lanches", async(event, categoria) => {
+  try {
+    const lancheDados = await Lanches.find({
+      categoria: new RegExp(categoria, "i"), //i ignore(letras maiuscula/minuscula)
+    });
+    console.log(lancheDados);
+    event.reply("lanche-filtrado", JSON.stringify(lancheDados));
+  } catch (error) {
+    console.log(error);
+  }
+})
 
 ipcMain.on("buscar-lanche", async (event, args) => {
   try {
     const lancheDados = await Lanches.find({
       nome: new RegExp(args, "i"), //i ignore(letras maiuscula/minuscula)
     });
+    console.log("--------------------------------------")
+    console.log(lancheDados)
     event.reply("lanche-data", JSON.stringify(lancheDados));
   } catch (error) {
     console.log(error);
