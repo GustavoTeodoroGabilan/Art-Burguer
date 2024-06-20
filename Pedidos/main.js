@@ -4,7 +4,7 @@ const path = require("node:path");
 // importar o módulo do banco de dados
 const { conectar, desconectar } = require("./database");
 //importar o Schema (models)
-const Lanches = require(`${__dirname}/src/Models/Pedidos`);
+const Pedidos = require(`${__dirname}/src/Models/Pedidos`);
 
 let win;
 const mainWindow = () => {
@@ -59,3 +59,9 @@ const statusConexao = async () => {
     win.webContents.send(`db-status', "Erro de conexão: ${error.message}`);
   }
 };
+
+ipcMain.on('get-pedidos', async (event, args) => {
+  const pedidosPendentes = await Pedidos.find()
+  console.log(pedidosPendentes);
+  event.reply('get-pedidos-feitos', JSON.stringify(pedidosPendentes))
+})
