@@ -34,20 +34,26 @@ Tecnologias que são abordadas neste tutorial:
 
 ## Tutorial passo a passo do projeto
 
-1- Tela incial (Produtos):
+1- Tela de cadatro de nome:
+
+![Tela-Nome](https://github.com/GustavoTeodoroGabilan/Art-Burguer/assets/115747012/50bf19d4-2c19-47c8-be16-7a1daa27112f)
+
+
+2- Tela incial (Produtos):
 
 ![340478931-eaa41757-0d38-4f8f-a3d7-58f23508a1e0](https://github.com/GustavoTeodoroGabilan/Art-Burguer/assets/115593922/d73023a4-3b8c-456d-897c-c5fa40403cd8)
 
-2- Tela do seu carrinho:
+3- Tela do seu carrinho:
+
+![carrinho](https://github.com/GustavoTeodoroGabilan/Art-Burguer/assets/115747012/4e59f337-8b78-4811-afba-259d70d21514)
 
 
-
-3- Tela de pagamento:
+4- Tela de pagamento:
 
 ![340479235-ff543ce9-bd5a-4fc6-ac4f-5b02c5736221](https://github.com/GustavoTeodoroGabilan/Art-Burguer/assets/115593922/6d09fad6-f2b3-4289-8522-e2d21b8923fe)
 
 
-4- Tela de pedido finalizado:
+5- Tela de pedido finalizado:
 
 ![340479276-77c7f5b0-613c-4e19-9b21-6a9562c0e1ff](https://github.com/GustavoTeodoroGabilan/Art-Burguer/assets/115593922/2ae292f4-1046-47bb-88a1-a14841657b9a)
 
