@@ -11,7 +11,6 @@ const mainWindow = () => {
   win = new BrowserWindow({
     width: 500,
     height: 900,
-    
     autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
