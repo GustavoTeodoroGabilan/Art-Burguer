@@ -1,13 +1,12 @@
 {
   "dependencies": {
-    "electron": "^31.0.1",
+    "electron": "^31.0.2",
     "mongoose": "^8.4.3"
   },
   "name": "pedidos",
   "version": "1.0.0",
   "description": "Tela de pedidos",
   "main": "main.js",
-  "devDependencies": {},
   "scripts": {
     "start": "electron ."
   },

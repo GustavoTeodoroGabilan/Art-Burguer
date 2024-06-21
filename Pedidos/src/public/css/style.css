@@ -7,7 +7,7 @@
 .telaPedido{
     width: 100%;
     height: 100vh;
-    background-image: url(../img/fundo.PNG);
+    /*background-image: url(../img/fundo.PNG);*/
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -18,7 +18,7 @@
 .preparando{
     width: 50%;
     height: 99%;
-    color: #ffffff;
+    color: #ff0000;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,7 +28,7 @@
 .prontos{
     width: 50%;
     height: 99%;
-    color: #ffffff;
+    color: #489624;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,21 +43,21 @@
     margin-top: 20px;
 }
 
-.pedidosPreparando{
+.pedidosPreparando {
     width: 100%;
     height: 80%;
     margin-top: 50px;
     display: flex;
-    align-items: start;
-    justify-content: space-evenly;
-    gap: 70px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    gap: 20px; 
 }
 
 .pedido{
-    width: 20%;
+    width: 50%;
     height: 20%;
-    background-color: rgb(189, 145, 0);
+    /*background-color: rgb(189, 145, 0);*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,7 +65,7 @@
 
 .pedido h2{
     color: black;
-    font-size: 0.5em;
+    font-size: 1em;
 }
 
 .pedidosProntos{
@@ -73,22 +73,31 @@
     height: 80%;
     margin-top: 50px;
     display: flex;
-    align-items: start;
-    justify-content: space-evenly;
-    gap: 70px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    gap: 20px; 
 }
 
 .pedidoPronto{
-    width: 20%;
+    width: 50%;
     height: 20%;
-    background-color: rgb(0, 0, 0);
+   /* background-color: rgb(0, 0, 0);*/
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .pedidoPronto h2{
-    color: rgb(189, 145, 0);
+    color: rgb(26, 25, 25);
     font-size: 1em;
+}
+
+.vertical-line {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 50%; /* Posiciona a linha no centro horizontal da tela */
+    width: 5px; /* Largura da linha */
+    background-color: rgb(255, 0, 0); /* Cor da linha */
 }
