@@ -7,10 +7,12 @@ let lancheIndividual = document.getElementById("produto");
 let arrayPedidos = [];
 let arrayCalculos = [];
 let arrayRenderiza = []
-
-
-//let calculo = 0
+let lanchesFiltrados = []
+let soma = 0
+let calculo = 0
 let preco;
+let lancheFiltrado
+let nomeCliente
 
 let updateStatus = false;
 
@@ -99,6 +101,11 @@ ipcRenderer.on("dadosLanche-selecionado", async (event, args) => {
     document.getElementById("paginaFinalizacao").classList.remove("tirar");
     document.getElementById("botaoVoltarPagamento").classList.add("tirar")
     document.getElementById("botaoVoltar").classList.add("tirar")
+    const cadastro = {
+      nome: nomeCliente,
+      status: "preparando"
+    }
+    ipcRenderer.send("nome-cliente", cadastro)
     setTimeout(function() {
       ipcRenderer.send("recarregar")
   }, 2000);
@@ -127,7 +134,7 @@ ipcRenderer.on("dadosLanche-selecionado", async (event, args) => {
     //percorrer o array
     lanche.forEach((t) => {
       lista.innerHTML += `
-<a class="lanche" href="#" id="produto" onclick="pegarLanche('${t.nome}')">
+<a class="lanche" id="produto" onclick="pegarLanche('${t.nome}')">
     <img src="${t.imagem}" alt="" class="imagemLanche">
     <h3 class="nomeLanche" id="nomeLanche">${t.nome}</h3>
     <p class="preco">R$${t.preco}</p>
@@ -137,28 +144,29 @@ ipcRenderer.on("dadosLanche-selecionado", async (event, args) => {
   }
 
   function lancheSelecionado(lanche) {
+    console.log("a");
     lanche.forEach((t) => {
       document.getElementById("lancheSelecionado").innerHTML += `
         <div  class="lancheSelecionado crescer">
+        <img src="../public/img/X.png" alt="" class="fechar" onclick="sair()">
         <img src="${t.imagem}" alt="">
         <h2>${t.nome}</h4>
-        <p>${t.ingredientes}</p>
-        <p class="">R$${t.preco}</p>
+        <p>${t.descricao}</p>
+        <p class="preco">R$${t.preco}</p>
         <button id="addPedido" onclick="novoPedido('${t.nome}')">adicionar</button>
         </div>
         `;
     });
     document.querySelector(".inicio").classList.add("blur");
     document.querySelector(".inicio").classList.add("bloquear")
+    
   }
 
   function pedidosConfirmacoes(pedidos){
-    console.log("-------")
-    console.log(pedidos)
-    let soma
    document.getElementById('pedidosFeitos').innerHTML += ""
     pedidos.forEach((t) => {
-      soma += t.preco
+      soma += Number(t.preco)
+      console.log(soma)
       document.getElementById('pedidosFeitos').innerHTML += `
          <div class="cardPedido">
           <img src="${t.imagem}" alt="" class="imagemLanche" />
@@ -166,10 +174,16 @@ ipcRenderer.on("dadosLanche-selecionado", async (event, args) => {
             <h1>${t.nome}</h1>
           </div>
           <h3>R$${t.preco}</h3>
-          <button class="botaoRemover"></button>
         </div>
       `
+      document.getElementById("valor").innerText = soma.toFixed(2)
     })
+  }
+
+  function sair(){
+    document.getElementById('lancheSelecionado').innerHTML = ""
+    document.querySelector(".inicio").classList.remove("blur")
+    document.querySelector(".inicio").classList.remove("bloquear")
   }
 
   // function calcularTotal(precoLanche) {
@@ -182,3 +196,33 @@ ipcRenderer.on("dadosLanche-selecionado", async (event, args) => {
   //   document.getElementById("valorTotal").innerText = `R$${calculo}`;
   // }
 
+function filtrar(categoria){
+  document.getElementById("cardapio").innerHTML = ""
+  ipcRenderer.send("filtrar-lanches", categoria)
+}
+
+ipcRenderer.on("lanche-filtrado", async(event, args) => {
+  lancheFiltrado = JSON.parse(args)
+  lanchesFiltrados = lancheFiltrado
+  renderizarLanches(lanchesFiltrados)
+})
+
+function colocarLetra(letra) {
+  console.log(letra);
+  document.getElementById('inputNome').value += letra
+}
+
+function apagar(){
+  // Obtém o valor atual do input
+  let currentValue = document.getElementById('inputNome').value;
+  // Remove o último caractere do valor
+  let newValue = currentValue.slice(0, -1);
+  // Atualiza o valor do input com o novo valor sem o último caractere
+  document.getElementById('inputNome').value = newValue;
+}
+
+function confirmarNome(){
+  nomeCliente = document.getElementById('inputNome').value
+  document.getElementById('colocarNome').classList.add('ocultar')
+  document.getElementById('inicio').classList.remove('ocultar')
+}

@@ -5,6 +5,7 @@ const path = require("node:path");
 const { conectar, desconectar } = require("./database");
 //importar o Schema (models)
 const Lanches = require(`${__dirname}/src/Models/Lanches`);
+const Pedidos = require(`${__dirname}/src/Models/Pedido`)
 
 let win;
 const mainWindow = () => {
@@ -110,4 +111,11 @@ ipcMain.on("envia-array-pedidos", async(event, args) => {
 
 ipcMain.on("recarregar", () => {
   win.reload()
+})
+
+
+ipcMain.on("nome-cliente", async (event, args) =>{
+  let novoCliente = new Pedidos(args)
+  await novoCliente.save()
+
 })
