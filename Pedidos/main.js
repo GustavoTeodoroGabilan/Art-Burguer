@@ -61,7 +61,17 @@ const statusConexao = async () => {
 };
 
 ipcMain.on('get-pedidos', async (event, args) => {
-  const pedidosPendentes = await Pedidos.find()
+  const pedidosPendentes = await Pedidos.find({
+    status: new RegExp("preparando", "i")
+  })
   console.log(pedidosPendentes);
   event.reply('get-pedidos-feitos', JSON.stringify(pedidosPendentes))
+})
+
+ipcMain.on('get-prontos', async (event, args) => {
+  const pedidosPendentes = await Pedidos.find({
+    status: new RegExp("pronto", "i")
+  })
+  console.log(pedidosPendentes);
+  event.reply('get-pedidos-prontos', JSON.stringify(pedidosPendentes))
 })
