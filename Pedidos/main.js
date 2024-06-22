@@ -61,17 +61,39 @@ const statusConexao = async () => {
 };
 
 ipcMain.on('get-pedidos', async (event, args) => {
-  const pedidosPendentes = await Pedidos.find({
-    status: new RegExp("preparando", "i")
-  })
-  console.log(pedidosPendentes);
+  const pedidosPendentes = await Pedidos.find()
+  //console.log(pedidosPendentes);
   event.reply('get-pedidos-feitos', JSON.stringify(pedidosPendentes))
 })
 
-ipcMain.on('get-prontos', async (event, args) => {
-  const pedidosPendentes = await Pedidos.find({
-    status: new RegExp("pronto", "i")
-  })
-  console.log(pedidosPendentes);
-  event.reply('get-pedidos-prontos', JSON.stringify(pedidosPendentes))
+//ipcMain.on("buscar-nome", async (event, args) => {
+  //let dadoCliente = new Pedidos.find({
+    //nome: new RegExp(args, "i")
+  //})
+ // ipcMain.send("dado-cliente", JSON.stringify(dadoCliente))
+//})
+ 
+ipcMain.on("id-cliente", async (event, idCliente) => {
+  console.log(idCliente);
+
+  try {
+    const pedidoAtualizado = await Pedidos.findByIdAndUpdate(
+      idCliente,
+      { 
+        status: 'pronto' 
+      },
+      { new: true }
+    );
+
+    if (pedidoAtualizado) {
+      console.log('Pedido atualizado:', pedidoAtualizado);
+      //event.reply("cliente-editado", JSON.stringify(pedidoAtualizado));
+    } else {
+      console.log('Pedido não encontrado');
+      //event.reply("cliente-editado", JSON.stringify({ error: 'Pedido não encontrado' }));
+    }
+  } catch (error) {
+    console.error('Erro ao atualizar pedido:', error);
+    //event.reply("cliente-editado", JSON.stringify({ error: error.message }));
+  }
 })
