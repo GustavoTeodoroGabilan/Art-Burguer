@@ -48,42 +48,5 @@ function renderizarPedidos(lanche) {
 }
 
 
-for(let i=1000; i>0; i++){
-  setTimeout(() => {
-    arrayProntos.push(arrayPedidos.pop())
-    renderizarProntos(arrayProntos)
-    renderizarPedidos(arrayPedidos)
-    },1000);
-}
-
-
-
-
-// Seleciona os elementos HTML relevantes
-const pedidosProntos = document.querySelector('.pedidosProntos');
-const pedidosPreparando = document.querySelector('#preparando');
-
-
-
-ipcRenderer.send("get-prontos");
-ipcRenderer.on("get-pedidos-prontos", (event, args) => {
-  const pedidos = JSON.parse(args);
-  arrayProntos = pedidos;
-  renderizarProntos(arrayProntos);
-
   
-});
-
-function renderizarProntos(lanche) {
-  document.getElementById("pronto").innerHTML = ""; //Limpar a lista
-  lanche.forEach((t) => {
-    document.getElementById("pronto").innerHTML += `
-      <div class="pedidoPronto">
-                  <h2>${t.nome}</h2>
-              </div>
-    `
-  });
-
-}
-
-
+  setTimeout(function() {ipcRenderer.send('atualizar')} , 5000)
