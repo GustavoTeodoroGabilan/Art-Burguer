@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--evitar ataques de Cross Site Scripting (injeção de dados)-->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'"
+    />
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../public/css/style.css" />
+    <title>Lanchonete</title>
+  </head>
+  <body>
+    <main class="propagandas " id="telaComeco">
+      <img src="../public/img/Banner2.png" alt="Promoção" class="promocao" />
+      <section class="comecar" id="comecarAgora">
+        <div class="pagamentos">
+          <img src="../public/img/alelo.png" alt="Alelo" />
+          <img src="../public/img/boleto.png" alt="Boleto" />
+          <img src="../public/img/paypal.png" alt="Paypal" />
+          <img src="../public/img/pix.png" alt="Pix" />
+          <img src="../public/img/visa.png" alt="Visa" />
+          <img src="../public/img/mastercard.png" alt="Mastercard" />
+        </div>
+        <p>Fazer meu pedido!</p>
+      </section>
+    </main>
+    <section class="colocarNome" id="colocarNome">
+      <div class="nome">
+        <h1>Digite seu nome</h1>
+        <input type="text" name="Nome" id="inputNome">
+      </div>
+      <div class="teclado">
+        <a id="a" class="botaoTeclado" onclick="colocarLetra('q')">Q</a>
+        <a id="b" class="botaoTeclado" onclick="colocarLetra('w')">W</a>
+        <a id="c" class="botaoTeclado" onclick="colocarLetra('e')">E</a>
+        <a id="d" class="botaoTeclado" onclick="colocarLetra('r')">R</a>
+        <a id="e" class="botaoTeclado" onclick="colocarLetra('t')">T</a>
+        <a id="f" class="botaoTeclado" onclick="colocarLetra('y')">Y</a>
+        <a id="g" class="botaoTeclado" onclick="colocarLetra('u')">U</a>
+        <a id="h" class="botaoTeclado" onclick="colocarLetra('i')">I</a>
+        <a id="i" class="botaoTeclado" onclick="colocarLetra('o')">O</a>
+        <a id="j" class="botaoTeclado" onclick="colocarLetra('p')">P</a>
+        <a id="k" class="botaoTeclado" onclick="colocarLetra('a')">A</a>
+        <a id="l" class="botaoTeclado" onclick="colocarLetra('s')">S</a>
+        <a id="m" class="botaoTeclado" onclick="colocarLetra('d')">D</a>
+        <a id="n" class="botaoTeclado" onclick="colocarLetra('f')">F</a>
+        <a id="o" class="botaoTeclado" onclick="colocarLetra('g')">G</a>
+        <a id="p" class="botaoTeclado" onclick="colocarLetra('h')">H</a>
+        <a id="q" class="botaoTeclado" onclick="colocarLetra('j')">J</a>
+        <a id="r" class="botaoTeclado" onclick="colocarLetra('k')">K</a>
+        <a id="s" class="botaoTeclado" onclick="colocarLetra('l')">L</a>
+        <a id="t" class="botaoTeclado" onclick="colocarLetra('z')">Z</a>
+        <a id="u" class="botaoTeclado" onclick="colocarLetra('x')">X</a>
+        <a id="v" class="botaoTeclado" onclick="colocarLetra('c')">C</a>
+        <a id="w" class="botaoTeclado" onclick="colocarLetra('v')">V</a>
+        <a id="x" class="botaoTeclado" onclick="colocarLetra('b')">B</a>
+        <a id="apagar"><img src="../public/img/backspace.png" alt="" onclick="apagar()"></a>
+        <a id="y" class="botaoTeclado" onclick="colocarLetra('n')">N</a>
+        <a id="z" class="botaoTeclado" onclick="colocarLetra('m')">M</a>
+        <a id="confirmar" class="botaoTeclado" onclick="confirmarNome()">confirmar</a>
+      </div>
+    </section>
+    <section class="inicio ocultar" id="inicio">
+      <div class="menu">
+        <a href="#" class="btn-escolha" id="promocoes" value="combos" onclick="filtrar('combos')"
+          ><img src="../public/img/promocaoIcon.png" alt="Promoções"
+        /></a>
+        <a href="#" class="btn-escolha" id="hamburguers" value = "hamburgueres" onclick="filtrar('hamburgueres')"
+          ><img src="../public/img/hamburguerIcon.png" alt="Hamburguers"
+        /></a>
+        <a href="#" class="btn-escolha" id="acompanhamentos" value="acompanhamentos" onclick="filtrar('acompanhamentos')"
+          ><img src="../public/img/acompanhamentoIcon.png" alt="Porções"
+        /></a>
+        <a href="#" class="btn-escolha" id="bebidas" value="bebida" onclick="filtrar('bebida')"
+          ><img src="../public/img/bebidasIcon.png" alt="Bebidas"
+        /></a>
+        <a href="#" class="btn-escolha" id="sobremesas"
+          ><img src="../public/img/sobremesaIcon.png" alt="Sobremesa" onclick="filtrar('sobremesa')"
+        /></a>
+      </div>
+      <div class="lanches" id="cardapio"></div>
+      <div class="espacoBranco"></div>
+      <div id="finalizarPedido" class="finalizarPedido ocultar">
+        <h3 class="valor" id="valorTotal"></h3>
+        <button class="btn-finaliza" id="finaliza" onclick="finalizarPedido()">
+          Confirmar pedido
+        </button>
+      </div>
+    </section>
+    <img src="../public/img/voltar.png" alt="" onclick="voltarSelecao()" class="botaoVoltar tirar" id="botaoVoltar">
+    <section id="lancheSelecionado" class="lancheSelecionados">
+    </section>
+    <section id="confirmarPedido" class="telaConfirmar ocultar">
+      <div id="pedidosFeitos" class="pedidosFeitos">
+      </div>
+      <div class="confPagar">
+        <div class="valorTotal">
+          <h2>Valor total:</h2>
+          <h3 id="valorTotal">R$<span id="valor"></span></h3>
+        </div>
+        <a href="#" class="botaoPagamento" onclick="paginaPagamento()">Pagamento</a>
+      </div>
+    </section>
+    <section class="ocultar" id="paginaPagamento">
+      <img src="../public/img/voltar.png" alt="" onclick="voltarCarrinho()" class="botaoVoltar" id="botaoVoltarPagamento">
+      <section id="pagamento" class="ocultar pagamento">
+        <h1>Método de Pagamento</h1>
+        <div class="metodos">
+          <a class="metodosPagamento" onclick="telaConfirmacao()"
+            ><img src="../public/img/alelo.png" alt="" /> Vale Alimentação</a
+          >
+          <a class="metodosPagamento" onclick="telaConfirmacao()"
+            ><img src="../public/img/VR.png" alt="" />Vale Refeição</a
+          >
+          <a class="metodosPagamento" onclick="telaConfirmacao()"
+            ><img src="../public/img/mastercard.png" alt="" />Cartão de
+            débito</a
+          >
+          <a class="metodosPagamento" onclick="telaConfirmacao()"
+            ><img src="../public/img/paypal.png" alt="" />Paypal</a
+          >
+          <a class="metodosPagamento" onclick="telaConfirmacao()"
+            ><img src="../public/img/pix.png" alt="" />Pix</a
+          >
+          <a class="metodosPagamento" onclick="telaConfirmacao()"
+            ><img src="../public/img/visa.png" alt="" />Cartão de credito</a
+          >
+        </div>
+      </section>
+    </section>
+    <section class="paginaFinal tirar" id="paginaFinalizacao">
+      <img src="../public/img/aprovado.png" alt="">
+      <h3>Obrigado por comprar com a gente</h3>
+    </section>
+    <script src="../public/js/comeco.js"></script>
+    <script src="../public/js/renderer.js"></script>
+    <script src="../public/js/bootstrap.min.js"></script>
+  </body>
+</html>
