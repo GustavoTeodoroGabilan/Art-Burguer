@@ -21,7 +21,7 @@ const mainWindow = () => {
   });
 
   win.loadFile(`${__dirname}/src/views/index.html`);
-  win.setFullScreen(true)
+  //win.setFullScreen(true)
 };
 
 app.whenReady().then(() => {
